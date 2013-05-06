@@ -18,6 +18,11 @@ class Checkout
 		$this->gateway = GatewayFactory::create('Dummy');
 	}
 
+	public function gateway()
+	{
+		return $this->gateway;
+	}
+
 	public function setGateway($gateway)
 	{
 		$this->gateway = GatewayFactory::create($gateway);
