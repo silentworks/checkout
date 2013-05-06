@@ -7,6 +7,9 @@ use Omnipay\Common\GatewayFactory;
 
 class Checkout
 {
+	private $cart;
+	protected $gateway;
+
 	public function __construct(Cart $cart)
 	{
 		$this->cart = $cart;
