@@ -30,7 +30,7 @@ class Checkout
 
 	public function processPayment(array $data)
 	{
-		$this->gateway->purchase(array(
+		return $this->gateway->purchase(array(
 			'amount'   => $this->cart->total(),
 			'currency' => $this->cart->currency->code,
 			'card'     => $data
