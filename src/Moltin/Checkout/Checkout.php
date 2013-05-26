@@ -3,19 +3,17 @@
 namespace Moltin\Checkout;
 
 use Moltin\Cart\Cart;
+use Moltin\Checkout\Exception\InvalidGatewayException;
 use Omnipay\Common\GatewayFactory;
 
 class Checkout
 {
 	private $cart;
-	protected $gateway;
+	protected $gateway = false;
 
 	public function __construct(Cart $cart)
 	{
 		$this->cart = $cart;
-
-		// Set the default gateway to Dummy
-		$this->gateway = GatewayFactory::create('Dummy');
 	}
 
 	public function gateway()
