@@ -185,6 +185,11 @@ class Checkout
 		}
 	}
 
+	protected function checkOrder()
+	{
+		if ( ! $this->order) $this->createOrder();
+	}
+
 	/**
 	 * Submit a request to the gateway
 	 * 
