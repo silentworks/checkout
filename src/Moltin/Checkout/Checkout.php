@@ -49,9 +49,13 @@ class Checkout
      * 
      * @param Cart $cart The cart you want to create an order from
      */
-    public function __construct(Cart $cart)
+    public function __construct(Cart $cart, OrderInterface $orderStore, TransactionInterface $transStore)
     {
         $this->cart = $cart;
+
+        $this->store = new StdClass;
+        $this->store->order = $orderStore;
+        $this->store->transaction = $transStore;
     }
 
     /**
