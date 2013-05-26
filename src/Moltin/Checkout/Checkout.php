@@ -26,6 +26,13 @@ class Checkout
 		$this->gateway = GatewayFactory::create($gateway);
 	}
 
+	public function gateway()
+	{
+		$this->checkGateway();
+		
+		return $this->gateway;
+	}
+
 	public function processPayment(array $data)
 	{
 		$this->checkGateway();
