@@ -17,10 +17,23 @@ class Checkout
 		$this->cart = $cart;
 	}
 
+	public function setCard($key, $value = null)
+	{
+		if (is_array($key)) {
+
+			foreach ($key as $set => $to) $this->setCard($set, $to);
+
+		} else {
+
+			$this->card[$key] = $value;
+
+		}
+	}
+
 	public function gateway()
 	{
 		$this->checkGateway();
-		
+
 		return $this->gateway;
 	}
 
@@ -32,6 +45,8 @@ class Checkout
 	public function processPayment(array $data = array())
 	{
 		$this->checkGateway();
+
+		$this->setCard($data);
 
 		return $this->gateway->purchase(array(
 			'amount'   => $this->cart->total(),
