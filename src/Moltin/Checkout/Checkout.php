@@ -10,6 +10,7 @@ class Checkout
 {
 	private $cart;
 	protected $gateway = false;
+	protected $card = array();
 
 	public function __construct(Cart $cart)
 	{
