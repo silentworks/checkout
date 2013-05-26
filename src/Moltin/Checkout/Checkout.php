@@ -186,6 +186,11 @@ class Checkout
 		}
 	}
 
+	/**
+	 * Check if there is an order attached to this checkout
+	 * 
+	 * @return void
+	 */
 	protected function checkOrder()
 	{
 		if ( ! $this->order) $this->createOrder();
