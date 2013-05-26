@@ -5,6 +5,7 @@ namespace Moltin\Checkout;
 use Moltin\Cart\Cart;
 use Moltin\Checkout\Exception\InvalidGatewayException;
 use Omnipay\Common\GatewayFactory;
+use Omnipay\Common\CreditCard;
 
 class Checkout
 {
@@ -51,7 +52,7 @@ class Checkout
 		return $this->gateway->purchase(array(
 			'amount'   => $this->cart->total(),
 			'currency' => $this->cart->currency()->code,
-			'card'     => $this->card
+			'card'     => new CreditCard($this->card)
 		));
 	}
 
