@@ -45,34 +45,42 @@ class Checkout
 
 	public function authorize(array $data = array())
 	{
-		$this->checkGateway();
+		return $this->gatewayRequest('authorize', $data);
+	}
 
-		$this->setCard($data);
-
-		return $this->gateway->authorize(array(
-			'amount'   => $this->cart->total(),
-			'currency' => $this->cart->currency()->code,
-			'card'     => new CreditCard($this->card)
-		));
+	public function completeAuthorize(array $data = array())
+	{
+		return $this->gatewayRequest('completeAuthorize', $data);
 	}
 
 	public function purchase(array $data = array())
 	{
-		$this->checkGateway();
-
-		$this->setCard($data);
-
-		return $this->gateway->purchase(array(
-			'amount'   => $this->cart->total(),
-			'currency' => $this->cart->currency()->code,
-			'card'     => new CreditCard($this->card)
-		));
+		return $this->gatewayRequest('purchase', $data);
 	}
 
 	protected function checkGateway()
 	{
 		if ( ! $this->gateway) {
 			throw new InvalidGatewayException('No gateway specified');
+		}
+	}
+
+	protected function gatewayRequest($method, array $data = array())
+	{
+		$this->checkGateway();
+
+		if (method_exists($this->gateway, $method)) {
+
+			$this->setCard($data);
+
+			return call_user_func_array(array($this->gateway, $method), array(
+				array(
+					'amount'   => $this->cart->total(),
+					'currency' => $this->cart->currency()->code,
+					'card'     => new CreditCard($this->card)
+				)
+			));
+
 		}
 	}
 
