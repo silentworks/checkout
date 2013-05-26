@@ -73,6 +73,11 @@ class Checkout
 		return $this->gatewayRequest('refund', $data);
 	}
 
+	public function void(array $data = array())
+	{
+		return $this->gatewayRequest('void', $data);
+	}
+
 	protected function checkGateway()
 	{
 		if ( ! $this->gateway) {
