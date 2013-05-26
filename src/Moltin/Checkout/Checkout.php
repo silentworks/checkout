@@ -40,6 +40,7 @@ class Checkout
 	    'type'
 	);
 
+	protected $order = false;
 	protected $gateway = false;
 	protected $data = array();
 
