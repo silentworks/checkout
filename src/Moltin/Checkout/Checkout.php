@@ -43,7 +43,20 @@ class Checkout
 		$this->gateway = GatewayFactory::create($gateway);
 	}
 
-	public function processPayment(array $data = array())
+	public function authorize(array $data = array())
+	{
+		$this->checkGateway();
+
+		$this->setCard($data);
+
+		return $this->gateway->authorize(array(
+			'amount'   => $this->cart->total(),
+			'currency' => $this->cart->currency()->code,
+			'card'     => new CreditCard($this->card)
+		));
+	}
+
+	public function purchase(array $data = array())
 	{
 		$this->checkGateway();
 
