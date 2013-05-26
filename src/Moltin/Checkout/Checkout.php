@@ -28,10 +28,19 @@ class Checkout
 
 	public function processPayment(array $data)
 	{
+		$this->checkGateway();
+
 		return $this->gateway->purchase(array(
 			'amount'   => $this->cart->total(),
-			'currency' => $this->cart->currency->code,
+			'currency' => $this->cart->currency()->code,
 			'card'     => $data
 		));
+	}
+
+	protected function checkGateway()
+	{
+		if ( ! $this->gateway) {
+			throw new InvalidGatewayException('No gateway specified');
+		}
 	}
 }
