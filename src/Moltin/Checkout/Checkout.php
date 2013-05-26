@@ -68,6 +68,11 @@ class Checkout
 		return $this->gatewayRequest('completePurchase', $data);
 	}
 
+	public function refund(array $data = array())
+	{
+		return $this->gatewayRequest('refund', $data);
+	}
+
 	protected function checkGateway()
 	{
 		if ( ! $this->gateway) {
