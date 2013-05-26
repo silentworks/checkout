@@ -63,6 +63,11 @@ class Checkout
 		return $this->gatewayRequest('purchase', $data);
 	}
 
+	public function completePurchase(array $data = array())
+	{
+		return $this->gatewayRequest('completePurchase', $data);
+	}
+
 	protected function checkGateway()
 	{
 		if ( ! $this->gateway) {
