@@ -29,6 +29,16 @@ use Omnipay\Common\CreditCard;
 class Checkout
 {
 	private $cart;
+	private $exclude = array(
+	    'number'
+	    'expiryMonth'
+	    'expiryYear'
+	    'startMonth'
+	    'startYear'
+	    'cvv'
+	    'issueNumber'
+	    'type'
+	);
 
 	protected $gateway = false;
 	protected $data = array();
