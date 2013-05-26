@@ -19,19 +19,14 @@ class Checkout
 
 	public function gateway()
 	{
+		$this->checkGateway();
+		
 		return $this->gateway;
 	}
 
 	public function setGateway($gateway)
 	{
 		$this->gateway = GatewayFactory::create($gateway);
-	}
-
-	public function gateway()
-	{
-		$this->checkGateway();
-		
-		return $this->gateway;
 	}
 
 	public function processPayment(array $data = array())
