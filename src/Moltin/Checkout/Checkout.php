@@ -53,6 +53,11 @@ class Checkout
 		return $this->gatewayRequest('completeAuthorize', $data);
 	}
 
+	public function capture(array $data = array())
+	{
+		$this->gatewayRequest('capture', $data);
+	}
+
 	public function purchase(array $data = array())
 	{
 		return $this->gatewayRequest('purchase', $data);
