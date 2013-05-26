@@ -29,8 +29,9 @@ use Omnipay\Common\CreditCard;
 class Checkout
 {
 	private $cart;
+
 	protected $gateway = false;
-	protected $card = array();
+	protected $data = array();
 
 	/**
 	 * The constructor
@@ -56,7 +57,7 @@ class Checkout
 
 		} else {
 
-			$this->card[$key] = $value;
+			$this->data[$key] = $value;
 
 		}
 
@@ -189,11 +190,13 @@ class Checkout
 
 			$this->setCard($data);
 
+			$this->checkOrder();
+
 			return call_user_func_array(array($this->gateway, $method), array(
 				array(
 					'amount'   => $this->cart->total(),
 					'currency' => $this->cart->currency()->code,
-					'card'     => new CreditCard($this->card)
+					'card'     => new CreditCard($this->data)
 				)
 			));
 
@@ -201,13 +204,13 @@ class Checkout
 	}
 
 	/**
-	 * Set a card property
+	 * Set a data property
 	 * 
 	 * @param string $property
 	 * @param mixed $value
 	 */
 	public function __set($property, $value)
 	{
-		$this->card[$property] = $value;
+		$this->data[$property] = $value;
 	}
 }
