@@ -23,6 +23,8 @@ namespace Moltin\Checkout;
 
 use Moltin\Cart\Cart;
 use Moltin\Checkout\Exception\InvalidGatewayException;
+use Moltin\Checkout\Storage\OrderInterface;
+use Moltin\Checkout\Storage\TransactionInterface;
 use Omnipay\Common\GatewayFactory;
 use Omnipay\Common\CreditCard;
 
