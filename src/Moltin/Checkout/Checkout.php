@@ -34,14 +34,14 @@ class Checkout
 		return $this->gateway;
 	}
 
-	public function processPayment(array $data)
+	public function processPayment(array $data = array())
 	{
 		$this->checkGateway();
 
 		return $this->gateway->purchase(array(
 			'amount'   => $this->cart->total(),
 			'currency' => $this->cart->currency()->code,
-			'card'     => $data
+			'card'     => $this->card
 		));
 	}
 
@@ -50,5 +50,10 @@ class Checkout
 		if ( ! $this->gateway) {
 			throw new InvalidGatewayException('No gateway specified');
 		}
+	}
+
+	public function __set($property, $value)
+	{
+		$this->card[$property] = $value;
 	}
 }
