@@ -29,6 +29,8 @@ class Checkout
 			$this->card[$key] = $value;
 
 		}
+
+		return $this;
 	}
 
 	public function gateway()
