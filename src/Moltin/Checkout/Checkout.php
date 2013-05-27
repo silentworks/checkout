@@ -111,6 +111,8 @@ class Checkout
     {
         if (in_array($option, $this->options)) {
             $this->options[$option] = $value;
+
+            return $this;
         } else {
             throw new InvalidArgumentException("'{$option}' is not a valid option");
         }
