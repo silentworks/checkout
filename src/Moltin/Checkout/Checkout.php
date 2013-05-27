@@ -282,6 +282,10 @@ class Checkout
 
             return $response;
 
+        } else {
+
+            throw new BadMethodCallException("'{$this->gateway->getName()}' does not support the '{$method}' method");
+
         }
     }
 
