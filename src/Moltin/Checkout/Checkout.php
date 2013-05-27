@@ -63,6 +63,16 @@ class Checkout
     }
 
     /**
+     * Create an order from the current object
+     * 
+     * @return int The order id
+     */
+    public function createOrder()
+    {
+        
+    }
+
+    /**
      * Set card/billing/shipping data
      * 
      * @param string|array $key A key or array of key-value pairs
