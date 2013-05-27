@@ -30,10 +30,20 @@ class CheckoutTest extends \PHPUnit_Framework_TestCase
     public function setUp()
     {
         $this->cart = new Cart(new RuntimeStore, new RuntimeIdentifier);
+
+        $this->orderStore = Mockery::mock('Moltin\Checkout\Storage\OrderInterface');
+        $this->transStore = Mockery::mock('Moltin\Checkout\Storage\TransactionInterface');
     }
 
     public function tearDown()
     {
         $this->cart->destroy();
+
+        Mockery::close();
+    }
+
+    public function testInstantiation()
+    {
+        $this->checkout = new Checkout($this->cart, $this->orderStore, $this->transStore);
     }
 }
