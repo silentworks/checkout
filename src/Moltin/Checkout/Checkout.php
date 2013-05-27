@@ -32,13 +32,13 @@ class Checkout
 {
     private $cart;
     private $exclude = array(
-        'number'
-        'expiryMonth'
-        'expiryYear'
-        'startMonth'
-        'startYear'
-        'cvv'
-        'issueNumber'
+        'number',
+        'expiryMonth',
+        'expiryYear',
+        'startMonth',
+        'startYear',
+        'cvv',
+        'issueNumber',
         'type'
     );
 
