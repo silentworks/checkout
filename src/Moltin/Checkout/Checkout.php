@@ -22,6 +22,7 @@
 namespace Moltin\Checkout;
 
 use StdClass;
+use InvalidArgumentException;
 use Moltin\Cart\Cart;
 use Moltin\Checkout\Exception\InvalidGatewayException;
 use Moltin\Checkout\Storage\OrderInterface;
