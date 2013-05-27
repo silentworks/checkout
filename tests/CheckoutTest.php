@@ -19,6 +19,7 @@
  *
  */
 
+use Mockery;
 use Moltin\Cart\Cart;
 use Moltin\Cart\Storage\Runtime as RuntimeStore;
 use Moltin\Cart\Identifier\Runtime as RuntimeIdentifier;
