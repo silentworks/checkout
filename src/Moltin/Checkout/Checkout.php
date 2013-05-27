@@ -68,11 +68,11 @@ class Checkout
      * @param string|array $key A key or array of key-value pairs
      * @param mixed $value The value you want to set $key to
      */
-    public function setCard($key, $value = null)
+    public function set($key, $value = null)
     {
         if (is_array($key)) {
 
-            foreach ($key as $set => $to) $this->setCard($set, $to);
+            foreach ($key as $set => $to) $this->set($set, $to);
 
         } else {
 
@@ -217,7 +217,7 @@ class Checkout
 
         if (method_exists($this->gateway, $method)) {
 
-            $this->setCard($data);
+            $this->set($data);
 
             $this->checkOrder();
 
