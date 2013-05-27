@@ -274,7 +274,11 @@ class Checkout
 
             $response = $request->send();
 
-            // @todo Update the order status
+            if ($response->isSuccessful()) {
+                // Update the order status
+            } elseif ( ! $response->isRedirect()) {
+                // There was an error, mark the order as failed
+            }
 
             return $response;
 
