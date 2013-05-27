@@ -137,9 +137,15 @@ class Checkout
      * 
      * @param string $gateway The name of the gateway
      */
-    public function setGateway($gateway)
+    public function setGateway($gateway, array $options)
     {
         $this->gateway = GatewayFactory::create($gateway);
+
+        foreach ($options as $option => $value) {
+            $method = 'set'.ucfirst($option);
+
+            if (method_exists($this->gateway, $method)) $this->gateway->$method($value);
+        }
     }
 
     /**
