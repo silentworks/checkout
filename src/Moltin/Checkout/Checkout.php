@@ -256,7 +256,7 @@ class Checkout
 
             $this->checkOrder();
 
-            return call_user_func_array(array($this->gateway, $method), array(
+            $request = call_user_func_array(array($this->gateway, $method), array(
                 array(
                     'amount'        => $this->cart->total(),
                     'currency'      => $this->cart->currency()->code,
@@ -270,6 +270,12 @@ class Checkout
 
                 )
             ));
+
+            $response = $request->send();
+
+            // @todo Update the order status
+
+            return $response;
 
         }
     }
