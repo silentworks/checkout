@@ -21,6 +21,7 @@
 
 namespace Moltin\Checkout;
 
+use StdClass;
 use Moltin\Cart\Cart;
 use Moltin\Checkout\Exception\InvalidGatewayException;
 use Moltin\Checkout\Storage\OrderInterface;
@@ -42,6 +43,7 @@ class Checkout
         'type'
     );
 
+    protected $store;
     protected $order = false;
     protected $gateway = false;
     protected $data = array();
