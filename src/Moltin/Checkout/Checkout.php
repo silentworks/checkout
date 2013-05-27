@@ -32,6 +32,14 @@ use Omnipay\Common\CreditCard;
 class Checkout
 {
     private $cart;
+    private $options = array(
+        'token'         => null,
+        'description'   => null,
+        'transactionId' => null,
+        'clientIp'      => null,
+        'returnUrl'     => null,
+        'cancelUrl'     => null
+    );
     private $exclude = array(
         'number',
         'expiryMonth',
@@ -233,9 +241,16 @@ class Checkout
 
             return call_user_func_array(array($this->gateway, $method), array(
                 array(
-                    'amount'   => $this->cart->total(),
-                    'currency' => $this->cart->currency()->code,
-                    'card'     => new CreditCard($this->data)
+                    'amount'        => $this->cart->total(),
+                    'currency'      => $this->cart->currency()->code,
+                    'card'          => new CreditCard($this->data),
+                    'token'         => $this->options['token'],
+                    'description'   => $this->options['description'],
+                    'transactionId' => $this->options['transactionId'],
+                    'clientIp'      => $this->options['clientIp'],
+                    'returnUrl'     => $this->options['returnUrl'],
+                    'cancelUrl'     => $this->options['cancelUrl']
+
                 )
             ));
 
