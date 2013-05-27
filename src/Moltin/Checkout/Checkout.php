@@ -266,7 +266,7 @@ class Checkout
 
             $request = call_user_func_array(array($this->gateway, $method), array(
                 array(
-                    'amount'        => $this->cart->total(),
+                    'amount'        => number_format($this->cart->total(), 2, '', ''),
                     'currency'      => $this->cart->currency()->code,
                     'card'          => new CreditCard($this->data),
                     'token'         => $this->options['token'],
