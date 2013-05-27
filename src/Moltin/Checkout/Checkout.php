@@ -102,6 +102,21 @@ class Checkout
     }
 
     /**
+     * Set a gateway option
+     * 
+     * @param string $option The option
+     * @param string $value  The value
+     */
+    public function setOption($option, $value)
+    {
+        if (in_array($option, $this->options)) {
+            $this->options[$option] = $value;
+        } else {
+            throw new InvalidArgumentException("'{$option}' is not a valid option");
+        }
+    }
+
+    /**
      * Return the gateway instance
      * 
      * @return Omnipay\Common\AbstractGateway The gateway instance
