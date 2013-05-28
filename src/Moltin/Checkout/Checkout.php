@@ -154,9 +154,9 @@ class Checkout
      * @param  array  $data The card/billing/shipping data
      * @return Omnipay\Common\RequestInterface
      */
-    public function authorize(array $data = array())
+    public function authorize(array $data = array(),)
     {
-        return $this->gatewayRequest('authorize', $data);
+        return $this->gatewayRequest('authorize', $data, 'authorized');
     }
 
     /**
@@ -165,9 +165,9 @@ class Checkout
      * @param  array  $data The card/billing/shipping data
      * @return Omnipay\Common\RequestInterface
      */
-    public function completeAuthorize(array $data = array())
+    public function completeAuthorize(array $data = array(),)
     {
-        return $this->gatewayRequest('completeAuthorize', $data);
+        return $this->gatewayRequest('completeAuthorize', $data, 'authorized');
     }
 
     /**
@@ -178,7 +178,7 @@ class Checkout
      */
     public function capture(array $data = array())
     {
-        $this->gatewayRequest('capture', $data);
+        $this->gatewayRequest('capture', $data, 'paid');
     }
 
     /**
@@ -189,7 +189,7 @@ class Checkout
      */
     public function purchase(array $data = array())
     {
-        return $this->gatewayRequest('purchase', $data);
+        return $this->gatewayRequest('purchase', $data, 'paid');
     }
 
     /**
@@ -200,7 +200,7 @@ class Checkout
      */
     public function completePurchase(array $data = array())
     {
-        return $this->gatewayRequest('completePurchase', $data);
+        return $this->gatewayRequest('completePurchase', $data, 'paid');
     }
 
     /**
@@ -211,7 +211,7 @@ class Checkout
      */
     public function refund(array $data = array())
     {
-        return $this->gatewayRequest('refund', $data);
+        return $this->gatewayRequest('refund', $data, 'refund');
     }
 
     /**
@@ -222,7 +222,7 @@ class Checkout
      */
     public function void(array $data = array())
     {
-        return $this->gatewayRequest('void', $data);
+        return $this->gatewayRequest('void', $data, 'void');
     }
 
     /**
