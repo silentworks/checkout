@@ -254,7 +254,7 @@ class Checkout
      * @param  array  $data The card/billing/shipping data
      * @return Omnipay\Common\RequestInterface
      */
-    protected function gatewayRequest($method, array $data, $status)
+    protected function gatewayRequest($method, array $data, $status = null)
     {
         $this->checkGateway();
 
