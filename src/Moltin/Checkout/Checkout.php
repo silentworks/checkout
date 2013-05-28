@@ -254,7 +254,7 @@ class Checkout
      * @param  array  $data The card/billing/shipping data
      * @return Omnipay\Common\RequestInterface
      */
-    protected function gatewayRequest($method, array $data = array())
+    protected function gatewayRequest($method, array $data, $status)
     {
         $this->checkGateway();
 
@@ -275,14 +275,13 @@ class Checkout
                     'clientIp'      => $this->options['clientIp'],
                     'returnUrl'     => $this->options['returnUrl'],
                     'cancelUrl'     => $this->options['cancelUrl']
-
                 )
             ));
 
             $response = $request->send();
 
             if ($response->isSuccessful()) {
-                // Update the order status
+                // Update the order status to $status
             } elseif ( ! $response->isRedirect()) {
                 // There was an error, mark the order as failed
             }
