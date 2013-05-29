@@ -154,7 +154,7 @@ class Checkout
      * @param  array  $data The card/billing/shipping data
      * @return Omnipay\Common\RequestInterface
      */
-    public function authorize(array $data = array(),)
+    public function authorize(array $data = array())
     {
         return $this->gatewayRequest('authorize', $data, 'authorized');
     }
@@ -165,7 +165,7 @@ class Checkout
      * @param  array  $data The card/billing/shipping data
      * @return Omnipay\Common\RequestInterface
      */
-    public function completeAuthorize(array $data = array(),)
+    public function completeAuthorize(array $data = array())
     {
         return $this->gatewayRequest('completeAuthorize', $data, 'authorized');
     }
