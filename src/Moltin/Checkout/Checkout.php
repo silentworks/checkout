@@ -252,6 +252,7 @@ class Checkout
      * 
      * @param  string $method The method to submit
      * @param  array  $data The card/billing/shipping data
+     * @param  string $status The order status if this request is a success
      * @return Omnipay\Common\RequestInterface
      */
     protected function gatewayRequest($method, array $data, $status)
