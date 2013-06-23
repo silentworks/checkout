@@ -26,10 +26,12 @@ use PDO as DB;
 class PDO implements \Moltin\Checkout\Storage\OrderInterface
 {
     protected $pdo;
+    protected $table;
 
-    public function __construct(DB $pdo)
+    public function __construct(DB $pdo, $table = 'orders')
     {
         $this->pdo = $pdo;
+        $this->table = $table;
     }
 
     // Return order id
