@@ -26,10 +26,12 @@ use PDO as DB;
 class PDO implements \Moltin\Checkout\Storage\TransactionInterface
 {
     protected $pdo;
+    protected $table;
 
-    public function __construct(DB $pdo)
+    public function __construct(DB $pdo, $table = 'transactions')
     {
         $this->pdo = $pdo;
+        $this->table = $table;
     }
 
     public function getTransaction($transId)
