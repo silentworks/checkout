@@ -23,7 +23,7 @@ namespace Moltin\Checkout\Storage\Transaction;
 
 use PDO as DB;
 
-class PDO implements \Moltin\Checkout\Storage\TransactionInterface
+class PDO implements \Moltin\Checkout\Storage\Transaction\TransactionInterface
 {
     private $pdo;
     protected $table;
