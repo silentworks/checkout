@@ -19,7 +19,7 @@
  *
  */
 
-namespace Moltin\Checkout\Storage;
+namespace Moltin\Checkout\Storage\Order;
 
 interface OrderInterface
 {
