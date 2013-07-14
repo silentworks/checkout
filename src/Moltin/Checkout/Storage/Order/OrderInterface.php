@@ -30,6 +30,9 @@ interface OrderInterface
     public function updateOrder($id, array $order);
 
     // Return true or false
+    public function updateStatus($id, $status);
+
+    // Return true or false
     // This should also delete items
     public function deleteOrder($id);
 
