@@ -28,10 +28,11 @@ class PDO implements \Moltin\Checkout\Storage\Order\OrderInterface
     private $pdo;
     protected $table;
 
-    public function __construct(DB $pdo, $table = 'orders')
+    public function __construct(DB $pdo, $table = 'orders', $itemTable = 'order_items')
     {
         $this->pdo = $pdo;
         $this->table = $table;
+        $this->itemTable = $itemTable;
     }
 
     // Return order id
