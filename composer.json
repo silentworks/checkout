@@ -21,5 +21,8 @@
         "psr-0": {
             "Moltin": "src/"
         }
-    }
+    },
+    "suggest": {
+        "zetacomponents/database": "Allows use of the built in PDO storage classes"
+        }
 }
