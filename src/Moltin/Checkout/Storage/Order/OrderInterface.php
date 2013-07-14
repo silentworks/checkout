@@ -24,17 +24,17 @@ namespace Moltin\Checkout\Storage\Order;
 interface OrderInterface
 {
     // Return order id
-    public function createOrder(array $order);
+    public function create(array $order);
 
     // Return true or false
-    public function updateOrder($id, array $order);
+    public function update($id, array $order);
 
     // Return true or false
     public function updateStatus($id, $status);
 
     // Return true or false
     // This should also delete items
-    public function deleteOrder($id);
+    public function delete($id);
 
     // Return the item ID
     public function insertItem($id, $item);
