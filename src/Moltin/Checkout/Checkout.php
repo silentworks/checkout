@@ -265,18 +265,16 @@ class Checkout
 
             $this->checkOrder();
 
-            $request = call_user_func_array(array($this->gateway, $method), array(
-                array(
-                    'amount'        => number_format($this->cart->total(), 2, '', ''),
-                    'currency'      => $this->cart->currency()->code,
-                    'card'          => new CreditCard($this->data),
-                    'token'         => $this->options['token'],
-                    'description'   => $this->options['description'],
-                    'transactionId' => $this->options['transactionId'],
-                    'clientIp'      => $this->options['clientIp'],
-                    'returnUrl'     => $this->options['returnUrl'],
-                    'cancelUrl'     => $this->options['cancelUrl']
-                )
+            $request = $this->gateway->$method(array(
+                'amount'        => number_format($this->cart->total(), 2, '', ''),
+                'currency'      => $this->cart->currency()->code,
+                'card'          => new CreditCard($this->data),
+                'token'         => $this->options['token'],
+                'description'   => $this->options['description'],
+                'transactionId' => $this->options['transactionId'],
+                'clientIp'      => $this->options['clientIp'],
+                'returnUrl'     => $this->options['returnUrl'],
+                'cancelUrl'     => $this->options['cancelUrl']
             ));
 
             $response = $request->send();
