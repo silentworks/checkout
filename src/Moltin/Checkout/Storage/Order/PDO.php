@@ -47,6 +47,12 @@ class PDO implements \Moltin\Checkout\Storage\Order\OrderInterface
     }
 
     // Return true or false
+    public function updateStatus($id, $status)
+    {
+
+    }
+
+    // Return true or false
     // This should also delete items
     public function deleteOrder($id)
     {
