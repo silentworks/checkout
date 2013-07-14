@@ -35,13 +35,13 @@ class PDO implements \Moltin\Checkout\Storage\Order\OrderInterface
     }
 
     // Return order id
-    public function createOrder(array $order)
+    public function create(array $order)
     {
 
     }
 
     // Return true or false
-    public function updateOrder($id, array $order)
+    public function update($id, array $order)
     {
 
     }
@@ -54,7 +54,7 @@ class PDO implements \Moltin\Checkout\Storage\Order\OrderInterface
 
     // Return true or false
     // This should also delete items
-    public function deleteOrder($id)
+    public function delete($id)
     {
 
     }
