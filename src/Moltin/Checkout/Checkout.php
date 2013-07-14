@@ -280,9 +280,9 @@ class Checkout
             $response = $request->send();
 
             if ($response->isSuccessful()) {
-                // Update the order status to $status
+                $this->store->order->updateStatus($this->order, $status);
             } elseif ( ! $response->isRedirect()) {
-                // There was an error, mark the order as failed
+                $this->store->order->updateStatus($this->order, 'failed');
             }
 
             return $response;
