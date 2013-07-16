@@ -25,12 +25,12 @@ use PDO as DB;
 
 class PDO implements \Moltin\Checkout\Storage\Order\OrderInterface
 {
-    private $pdo;
+    private $db;
     protected $table;
 
-    public function __construct(DB $pdo, $table = 'orders', $itemTable = 'order_items')
+    public function __construct($table = 'orders', $itemTable = 'order_items')
     {
-        $this->pdo = $pdo;
+        $this->db = \ezcDbInstance::get();
         $this->table = $table;
         $this->itemTable = $itemTable;
     }
