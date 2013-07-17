@@ -56,7 +56,6 @@ class Checkout
     protected $store;
     protected $order = false;
     protected $gateway = false;
-    protected $gatewayName = null;
     protected $data = array();
 
     /**
@@ -141,7 +140,6 @@ class Checkout
     public function setGateway($gateway, array $options)
     {
         $this->gateway = GatewayFactory::create($gateway);
-        $this->gatewayName = $gateway;
 
         foreach ($options as $option => $value) {
             $method = 'set'.ucfirst($option);
