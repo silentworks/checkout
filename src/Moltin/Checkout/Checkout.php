@@ -77,9 +77,23 @@ class Checkout
      * 
      * @return int The order id
      */
-    public function createOrder()
+    public function createOrder(array $extra = array())
     {
+        $data = array_merge(array(
+            'gateway' => $this->gateway->getShortName(),
+            'status'  => 'unpaid',
+            'subtotal' => $this->cart->total(false),
+            'total' => $this->cart->total(),
+            'currency' => $this->cart->currency()->code
+        ), $extra);
         
+        $this->order = $this->store->order->create($data);
+
+        foreach ($this->cart->contents(true) as $item) {
+            $this->store->order->insertItem($this->order, $item);
+        }
+
+        return $this->order;
     }
 
     /**
