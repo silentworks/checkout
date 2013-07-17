@@ -56,6 +56,7 @@ class Checkout
     protected $store;
     protected $order = false;
     protected $gateway = false;
+    protected $gatewayName = null;
     protected $data = array();
 
     /**
