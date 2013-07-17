@@ -38,7 +38,14 @@ class PDO implements \Moltin\Checkout\Storage\Order\OrderInterface
     // Return order id
     public function create(array $order)
     {
+        $query = $this->db->createInsertQuery()
+            ->insertInto('orders');
 
+        foreach ($order as $key => $value) $query->set($key, $query->bindValue($value));
+
+        $query->prepare()->execute();
+
+        return $this->db->lastInsertId();
     }
 
     // Return true or false
