@@ -140,6 +140,7 @@ class Checkout
     public function setGateway($gateway, array $options)
     {
         $this->gateway = GatewayFactory::create($gateway);
+        $this->gatewayName = $gateway;
 
         foreach ($options as $option => $value) {
             $method = 'set'.ucfirst($option);
