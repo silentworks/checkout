@@ -70,7 +70,19 @@ class PDO implements \Moltin\Checkout\Storage\Order\OrderInterface
     // Return the item ID
     public function insertItem($id, $item)
     {
+        $query = $this->db->createInsertQuery()
+            ->insertInto('orders_items');
 
+        foreach ($item as $key => $value) {
+            if ($key != 'id') $query->set($key, $query->bindValue($value));
+        }
+
+        $query->set('order_id', $query->bindValue($id));
+        $query->set('total', $query->bindValue($item['price'] * $item['quantity']));
+
+        $query->prepare()->execute();
+
+        return $this->db->lastInsertId();
     }
 
     // Return true or false
