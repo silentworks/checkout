@@ -79,7 +79,12 @@ class PDO implements \Moltin\Checkout\Storage\Order\OrderInterface
     // This should also delete items
     public function delete($id)
     {
+        $query = $this->db->createDeleteQuery()
+            ->deleteFrom('orders');
 
+        return $query->where($q->expr->eq('id', $q->bindValue($id)))
+            ->prepare()
+            ->execute();
     }
 
     // Return the item ID
