@@ -280,7 +280,7 @@ class Checkout
             $this->checkOrder();
 
             $request = $this->gateway->$method(array(
-                'amount'        => number_format($this->cart->total(), 2, '', ''),
+                'amount'        => number_format($this->cart->total(), 2, '.', ''),
                 'currency'      => $this->cart->currency()->code,
                 'card'          => new CreditCard($this->data),
                 'token'         => $this->options['token'],
