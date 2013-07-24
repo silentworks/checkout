@@ -51,7 +51,16 @@ class PDO implements \Moltin\Checkout\Storage\Order\OrderInterface
     // Return true or false
     public function update($id, array $order)
     {
-
+        $query = $this->db->createUpdateQuery()
+            ->update('orders');
+        
+        foreach ($order as $key => $value) {  
+            $query->set($key, $query->bindValue($value));
+        }
+        
+        return $query->where($query->expr->eq('id', $id))
+            ->prepare()
+            ->execute();
     }
 
     // Return true or false
