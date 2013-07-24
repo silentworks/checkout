@@ -116,8 +116,13 @@ class PDO implements \Moltin\Checkout\Storage\Order\OrderInterface
     }
 
     // Return true or false
-    public function deleteItem($itemId)
+    public function deleteItem($id)
     {
+        $query = $this->db->createDeleteQuery()
+            ->deleteFrom('orders_items');
 
+        return $query->where($q->expr->eq('id', $q->bindValue($id)))
+            ->prepare()
+            ->execute();
     }
 }
