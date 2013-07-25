@@ -21,8 +21,6 @@
 
 namespace Moltin\Checkout\Storage\Order;
 
-use PDO as DB;
-
 class PDO implements \Moltin\Checkout\Storage\Order\OrderInterface
 {
     private $db;
