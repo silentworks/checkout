@@ -21,16 +21,14 @@
 
 namespace Moltin\Checkout\Storage\Transaction;
 
-use PDO as DB;
-
 class PDO implements \Moltin\Checkout\Storage\Transaction\TransactionInterface
 {
-    private $pdo;
+    private $db;
     protected $table;
 
-    public function __construct(DB $pdo, $table = 'transactions')
+    public function __construct($table = 'transactions')
     {
-        $this->pdo = $pdo;
+        $this->db = \ezcDbInstance::get();
         $this->table = $table;
     }
 
