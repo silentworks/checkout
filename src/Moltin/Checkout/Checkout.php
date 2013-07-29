@@ -134,6 +134,11 @@ class Checkout
         }
     }
 
+    public function setOptions(array $options)
+    {
+        foreach ($options as $option => $value) $this->setOption($option, $value);
+    }
+
     /**
      * Return the gateway instance
      * 
