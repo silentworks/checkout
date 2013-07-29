@@ -125,7 +125,7 @@ class Checkout
      */
     public function setOption($option, $value)
     {
-        if (in_array($option, $this->options)) {
+        if (array_key_exists($option, $this->options)) {
             $this->options[$option] = $value;
 
             return $this;
