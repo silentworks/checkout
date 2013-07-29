@@ -173,9 +173,9 @@ class Checkout
      * @param  array  $data The card/billing/shipping data
      * @return Omnipay\Common\RequestInterface
      */
-    public function authorize(array $data = array())
+    public function authorize(array $data = array(), array $options = array())
     {
-        return $this->gatewayRequest('authorize', $data, 'authorized');
+        return $this->gatewayRequest('authorize', $data, $options, 'authorized');
     }
 
     /**
@@ -184,9 +184,9 @@ class Checkout
      * @param  array  $data The card/billing/shipping data
      * @return Omnipay\Common\RequestInterface
      */
-    public function completeAuthorize(array $data = array())
+    public function completeAuthorize(array $data = array(), array $options = array())
     {
-        return $this->gatewayRequest('completeAuthorize', $data, 'authorized');
+        return $this->gatewayRequest('completeAuthorize', $data, $options, 'authorized');
     }
 
     /**
@@ -195,9 +195,9 @@ class Checkout
      * @param  array  $data The card/billing/shipping data
      * @return Omnipay\Common\RequestInterface
      */
-    public function capture(array $data = array())
+    public function capture(array $data = array(), array $options = array())
     {
-        $this->gatewayRequest('capture', $data, 'paid');
+        $this->gatewayRequest('capture', $data, $options, 'paid');
     }
 
     /**
@@ -206,9 +206,9 @@ class Checkout
      * @param  array  $data The card/billing/shipping data
      * @return Omnipay\Common\RequestInterface
      */
-    public function purchase(array $data = array())
+    public function purchase(array $data = array(), array $options = array())
     {
-        return $this->gatewayRequest('purchase', $data, 'paid');
+        return $this->gatewayRequest('purchase', $data, $options, 'paid');
     }
 
     /**
@@ -217,9 +217,9 @@ class Checkout
      * @param  array  $data The card/billing/shipping data
      * @return Omnipay\Common\RequestInterface
      */
-    public function completePurchase(array $data = array())
+    public function completePurchase(array $data = array(), array $options = array())
     {
-        return $this->gatewayRequest('completePurchase', $data, 'paid');
+        return $this->gatewayRequest('completePurchase', $data, $options, 'paid');
     }
 
     /**
@@ -228,9 +228,9 @@ class Checkout
      * @param  array  $data The card/billing/shipping data
      * @return Omnipay\Common\RequestInterface
      */
-    public function refund(array $data = array())
+    public function refund(array $data = array(), array $options = array())
     {
-        return $this->gatewayRequest('refund', $data, 'refund');
+        return $this->gatewayRequest('refund', $data, $options, 'refund');
     }
 
     /**
@@ -239,9 +239,9 @@ class Checkout
      * @param  array  $data The card/billing/shipping data
      * @return Omnipay\Common\RequestInterface
      */
-    public function void(array $data = array())
+    public function void(array $data = array(), array $options = array())
     {
-        return $this->gatewayRequest('void', $data, 'void');
+        return $this->gatewayRequest('void', $data, $options, 'void');
     }
 
     /**
@@ -274,13 +274,14 @@ class Checkout
      * @param  string $status The order status if this request is a success
      * @return Omnipay\Common\RequestInterface
      */
-    protected function gatewayRequest($method, array $data, $status)
+    protected function gatewayRequest($method, array $data, array $options, $status)
     {
         $this->checkGateway();
 
         if (method_exists($this->gateway, $method)) {
 
             $this->setData($data);
+            $this->setOptions($options);
 
             $this->checkOrder();
 
