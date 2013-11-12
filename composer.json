@@ -12,7 +12,7 @@
     "require": {
         "php": ">=5.3.0",
         "moltin/cart": "dev-master",
-        "omnipay/omnipay": "1.0.*"
+        "omnipay/omnipay": "1.1.*"
     },
     "require-dev": {
         "phpunit/phpunit": "3.7.*",
